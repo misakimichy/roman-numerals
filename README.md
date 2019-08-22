@@ -11,15 +11,7 @@ Build a Roman Numerals (using HTML, CSS, JavaScript and jQuery)
 Build a Roman Numerals (using HTML, CSS, JavaScript and jQuery)
 
 Write a method to convert numbers into Roman numerals. Roman numerals are based on seven symbols:
-|  symbols | value  |
-|----------|--------|
-|     I    |  1     |
-|     V    |  5     |
-|     X    |  10    |
-|     L    |  50    |
-|     C    |  100   |
-|     D    |  500   |
-|     M    |  1,000 |
+![Roman numerals symbols](img/screenshot.png)
 
 
 The most basic rule is that you add the value of all the symbols: so II is 2, LXVI is 66, etc.
