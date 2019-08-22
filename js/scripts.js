@@ -10,17 +10,13 @@ $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
     var userInput = $("input#user-input").val();
-    // console.log(userInput);
     var digits = userInput.split('').length;
-    // console.log(digits);
 
     if (userInput > 3999 || userInput <= 0) {
       alert("Please enter number between 1 to 3999!")
     }
 
-    var thousandsRem, hundredsRem, tens;
-
-
+    var thousandsRem, hundredsRem, tensRem;
 
     if (digits >= 4) {
       thousandsRem = userInput % 1000;
@@ -46,69 +42,44 @@ $(document).ready(function(){
         var numbsC = concatRomans("C", digitHundreds);
         console.log(numbsC);
       }
-
-      // var numbsD = concatRomans("D",hundredsRem);
-      // console.log(hundredsRem);
-
-    } else if (digits >= 2) {
-      var tens = userInput % 10;
-      console.log(tens);
-    } else {
-      console.log(userInput);
     }
+    if (digits >= 2) {
+      tensRem = hundredsRem % 10;
+      var digitTens = (hundredsRem - tensRem) / 10;
 
+      if (digitTens  === 9){
+        console.log("XC");
 
-    // Code below is version 1
+      } else if (digitTens >= 5) {
+        var digitTens2 = digitTens - 5
+        var numbsX = concatRomans("X", digitTens2);
+        console.log("L" + numbsX);
 
-    // } else if (userInput >= 900) {
-    //   // concatRomans("CM", 1);
-    //   console.log("CM");
-    //
-    // } else if (userInput >= 500) {
-    //   var handreds2 = userInput / 100 - 5;
-    //   var numbsC = concatRomans("C", handreds2);
-    //   console.log("D" + numbsC);
-    //
-    // } else if (userInput >= 400) {
-    //   console.log("CD");
-    //
-    // } else if (userInput >= 100) {
-    //   var handreds1 = userInput / 100;
-    //   var numbsD = concatRomans("D", handreds1);
-    //   console.log(numbsD);
-    //
-    // } else if (userInput >= 90) {
-    //   console.log("XC")
-    //
-    // } else if (userInput >= 50) {
-    //   var tens2 = userInput / 10 - 5;
-    //   var numbsX = concatRomans("X", tens2);
-    //   console.log("L" + numbsX);
-    //
-    // } else if (userInput >= 40) {
-    //   console.log("XL");
-    //
-    // } else if (userInput >= 10) {
-    //   var tens1 = userInput / 10;
-    //   var numbsX = concatRomans("X", tens1);
-    //   console.log(numbsX);
-    //
-    // } else if (userInput === 9) {
-    //   console.log("IX");
-    //
-    // } else if (userInput >= 5) {
-    //   var ones2 = userInput - 5;
-    //   var numbsI = concatRomans("I", ones2)
-    //   console.log("V" + numbsI);
-    //
-    // } else if (userInput === 4) {
-    //   console.log("IV");
-    //
-    // } else {
-    //   var numbsI = concatRomans("I", userInput);
-    //   console.log(numbsI);
-    // }
+      } else if (digitTens === 4) {
+        console.log("XL");
 
+      } else {
+        var numbsX = concatRomans("X", digitTens);
+        console.log(numbsX);
+      }
+    }
+    if (digits >= 1) {
+      if (tensRem  === 9){
+        console.log("IX");
+
+      } else if (tensRem >= 5) {
+        var digitOnes = tensRem - 5
+        var numbsV = concatRomans("I", digitOnes);
+        console.log("V" + numbsV);
+
+      } else if (tensRem === 4) {
+        console.log("IV");
+
+      } else {
+        var numbsI = concatRomans("I", tensRem);
+        console.log(numbsI);
+      }
+    }
   //  $(".result").show();
   });
 });
