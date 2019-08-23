@@ -25,8 +25,16 @@ $(document).ready(function(){
       console.log(numbsM);
     }
     if (digits >= 3) {
-      hundredsRem = thousandsRem % 100;
-      var digitHundreds = (thousandsRem - hundredsRem) / 100;
+      var digitHundreds;
+      //Define digitHundreds
+      if (thousandsRem){
+        hundredsRem = thousandsRem % 100;
+        digitHundreds = (thousandsRem - hundredsRem) / 100;
+      } else {
+        hundredsRem = userInput % 100;
+        digitHundreds = (userInput - hundredsRem) / 100;
+      }
+
       if (digitHundreds  === 9){
         console.log("CM");
 
@@ -44,9 +52,15 @@ $(document).ready(function(){
       }
     }
     if (digits >= 2) {
+      var digitTens;
+      // Define digitTens
+      if (hundredsRem){
       tensRem = hundredsRem % 10;
-      var digitTens = (hundredsRem - tensRem) / 10;
-
+      digitTens = (hundredsRem - tensRem) / 10;
+    } else {
+      tensRem = userInput % 10;
+      digitTens = (userInput - tensRem) / 10;
+    }
       if (digitTens  === 9){
         console.log("XC");
 
@@ -64,12 +78,16 @@ $(document).ready(function(){
       }
     }
     if (digits >= 1) {
+      // DefinedigitOnes
+      if(!tensRem) {
+        tensRem === parseInt(userInput);
+      }
+
       if (tensRem  === 9){
         console.log("IX");
 
       } else if (tensRem >= 5) {
-        var digitOnes = tensRem - 5
-        var numbsV = concatRomans("I", digitOnes);
+        var numbsV = concatRomans("I", tensRem - 5);
         console.log("V" + numbsV);
 
       } else if (tensRem === 4) {
