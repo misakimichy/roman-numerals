@@ -3,106 +3,118 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-function concatRomans(letter, number) {
-  var text= '';
-  for(var i = 0; i < number; i++) {
+const concatRomans = (letter, number) => {
+  let text= '';
+  for(let i = 0; i < number; i++) {
     text += letter;
   }
   return text;
-}
+};
 
-$(document).ready(function(){
-  $("form").submit(function(event){
-    event.preventDefault();
-    var userInput = $("input#user-input").val();
-    var digits = userInput.split('').length;
+export const convertToRomanNumeral = (userInput) => {
+  const digits = userInput.length;
+  if (userInput > 3999 || userInput <= 0) {
+    alert("Please enter number between 1 to 3999!");
+  }
 
-    if (userInput > 3999 || userInput <= 0) {
-      alert("Please enter number between 1 to 3999!");
+  let thousandsRem, hundredsRem, tensRem;
+  let romanNumeral = [];
+  // Bigger than 1000 (4 digits)
+  if (digits >= 4) {
+    thousandsRem = userInput % 1000;
+    const digitThousands = (userInput - thousandsRem) / 1000;
+    const numbsM = concatRomans("M", digitThousands);
+    romanNumeral.push(numbsM);
+  }
+
+  // Bigger than 100 and less than 1000 (3 digits)
+  if (digits >= 3) {
+    let digitHundreds;
+    //Define digitHundreds
+    if (thousandsRem){
+      hundredsRem = thousandsRem % 100;
+      digitHundreds = (thousandsRem - hundredsRem) / 100;
+    } else {
+      hundredsRem = userInput % 100;
+      digitHundreds = (userInput - hundredsRem) / 100;
     }
 
-    var thousandsRem, hundredsRem, tensRem;
+    if (digitHundreds  === 9){
+      romanNumeral.push("CM");
 
-    if (digits >= 4) {
-      thousandsRem = userInput % 1000;
-      var digitThousands = (userInput - thousandsRem) / 1000;
-      var numbsM = concatRomans("M", digitThousands);
-      return numbsM;
+    } else if (digitHundreds >= 5) {
+      const digitHundreds2= digitHundreds - 5;
+      const numbsC = concatRomans("C", digitHundreds2);
+      romanNumeral.push("D" + numbsC);
+
+    } else if (digitHundreds === 4) {
+      romanNumeral.push("CD");
+
+    } else {
+      var numbsC = concatRomans("C", digitHundreds);
+      romanNumeral.push(numbsC);
     }
-    if (digits >= 3) {
-      var digitHundreds;
-      //Define digitHundreds
-      if (thousandsRem){
-        hundredsRem = thousandsRem % 100;
-        digitHundreds = (thousandsRem - hundredsRem) / 100;
-      } else {
-        hundredsRem = userInput % 100;
-        digitHundreds = (userInput - hundredsRem) / 100;
-      }
+  }
 
-      if (digitHundreds  === 9){
-        return "CM";
-
-      } else if (digitHundreds >= 5) {
-        var digitHundreds2 = digitHundreds - 5;
-        var numbsC = concatRomans("C", digitHundreds2);
-        return "D" + numbsC;
-
-      } else if (digitHundreds === 4) {
-        return "CD";
-
-      } else {
-        var smallNumbsC = concatRomans("C", digitHundreds);
-        return smallNumbsC;
-      }
-    }
-    if (digits >= 2) {
-      var digitTens;
-      // Define digitTens
-      if (hundredsRem){
+  // Bigger than 10 and less than 100 (2 digits)
+  if (digits >= 2) {
+    let digitTens;
+    // Define digitTens
+    if (hundredsRem){
       tensRem = hundredsRem % 10;
       digitTens = (hundredsRem - tensRem) / 10;
     } else {
       tensRem = userInput % 10;
       digitTens = (userInput - tensRem) / 10;
     }
-      if (digitTens  === 9){
-        return "XC";
+    if (digitTens  === 9){
+      romanNumeral.push("XC");
 
-      } else if (digitTens >= 5) {
-        var digitTens2 = digitTens - 5
-        var numbsX = concatRomans("X", digitTens2);
-        return "L" + numbsX;
+    } else if (digitTens >= 5) {
+      const digitTens2 = digitTens - 5;
+      const numbsX = concatRomans("X", digitTens2);
+      romanNumeral.push("L" + numbsX);
 
-      } else if (digitTens === 4) {
-        return "XL";
+    } else if (digitTens === 4) {
+      romanNumeral.push("XL");
 
-      } else {
-        var smallNumbsX = concatRomans("X", digitTens);
-        return smallNumbsX;
-      }
+    } else {
+      const numbsX = concatRomans("X", digitTens);
+      romanNumeral.push(numbsX);
     }
-    if (digits >= 1) {
-      // Define digitOnes
-      if(!tensRem) {
-        tensRem === parseInt(userInput);
-      }
+  }
 
-      if (tensRem  === 9){
-        return "IX";
-
-      } else if (tensRem >= 5) {
-        var numbsV = concatRomans("I", tensRem - 5);
-        return "V" + numbsV;
-
-      } else if (tensRem === 4) {
-        return "IV";
-
-      } else {
-        var numbsI = concatRomans("I", tensRem);
-        return numbsI;
-      }
+  // less than 10
+  if (digits >= 1) {
+    // Define digitOnes
+    if(!tensRem) {
+      tensRem = parseInt(userInput);
     }
-  //  $(".result").show();
+
+    if (tensRem  === 9){
+      romanNumeral.push("IX");
+
+    } else if (tensRem >= 5) {
+      const numbsV = concatRomans("I", tensRem - 5);
+      romanNumeral.push("V" + numbsV);
+
+    } else if (tensRem === 4) {
+      romanNumeral.push("IV");
+
+    } else {
+      const numbsI = concatRomans("I", tensRem);
+      romanNumeral.push(numbsI);
+    }
+  }
+  return romanNumeral.join('');
+};
+
+$(document).ready(function(){
+  $("form").submit(function(event){
+    event.preventDefault();
+    const userInput = $("input#user-input").val();
+    const romanNumeral = convertToRomanNumeral(userInput);
+    $(".result").show();
+    $("#roman-numeral").text(romanNumeral);
   });
 });
