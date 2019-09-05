@@ -1,0 +1,39 @@
+{
+  "name": "roman-numerals",
+  "version": "1.0.0",
+  "description": "#### _Given a task to build a Roman Numerals Webpage, 8/22/2019_ #### _**08/22/19: Bahay Gulle Bilgi & Misaki Koonce**_",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode development",
+    "start": "npm run build; webpack-dev-server --open --mode development",
+    "lint": "eslint src/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/misakimichy/roman-numerals.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/misakimichy/roman-numerals/issues"
+  },
+  "homepage": "https://github.com/misakimichy/roman-numerals#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.18",
+    "css-loader": "^0.28.10",
+    "eslint": "^4.18.2",
+    "eslint-loader": "^2.0.0",
+    "html-webpack-plugin": "^3.0.6",
+    "style-loader": "^0.20.2",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "webpack": "4.19.1",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0"
+  }
+}

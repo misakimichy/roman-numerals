@@ -1,3 +1,8 @@
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
+
 function concatRomans(letter, number) {
   var text= '';
   for(var i = 0; i < number; i++) {
@@ -13,7 +18,7 @@ $(document).ready(function(){
     var digits = userInput.split('').length;
 
     if (userInput > 3999 || userInput <= 0) {
-      alert("Please enter number between 1 to 3999!")
+      alert("Please enter number between 1 to 3999!");
     }
 
     var thousandsRem, hundredsRem, tensRem;
@@ -22,7 +27,7 @@ $(document).ready(function(){
       thousandsRem = userInput % 1000;
       var digitThousands = (userInput - thousandsRem) / 1000;
       var numbsM = concatRomans("M", digitThousands);
-      console.log(numbsM);
+      return numbsM;
     }
     if (digits >= 3) {
       var digitHundreds;
@@ -36,19 +41,19 @@ $(document).ready(function(){
       }
 
       if (digitHundreds  === 9){
-        console.log("CM");
+        return "CM";
 
       } else if (digitHundreds >= 5) {
-        var digitHundreds2= digitHundreds - 5
+        var digitHundreds2 = digitHundreds - 5;
         var numbsC = concatRomans("C", digitHundreds2);
-        console.log("D" + numbsC);
+        return "D" + numbsC;
 
       } else if (digitHundreds === 4) {
-        console.log("CD");
+        return "CD";
 
       } else {
-        var numbsC = concatRomans("C", digitHundreds);
-        console.log(numbsC);
+        var smallNumbsC = concatRomans("C", digitHundreds);
+        return smallNumbsC;
       }
     }
     if (digits >= 2) {
@@ -62,40 +67,40 @@ $(document).ready(function(){
       digitTens = (userInput - tensRem) / 10;
     }
       if (digitTens  === 9){
-        console.log("XC");
+        return "XC";
 
       } else if (digitTens >= 5) {
         var digitTens2 = digitTens - 5
         var numbsX = concatRomans("X", digitTens2);
-        console.log("L" + numbsX);
+        return "L" + numbsX;
 
       } else if (digitTens === 4) {
-        console.log("XL");
+        return "XL";
 
       } else {
-        var numbsX = concatRomans("X", digitTens);
-        console.log(numbsX);
+        var smallNumbsX = concatRomans("X", digitTens);
+        return smallNumbsX;
       }
     }
     if (digits >= 1) {
-      // DefinedigitOnes
+      // Define digitOnes
       if(!tensRem) {
         tensRem === parseInt(userInput);
       }
 
       if (tensRem  === 9){
-        console.log("IX");
+        return "IX";
 
       } else if (tensRem >= 5) {
         var numbsV = concatRomans("I", tensRem - 5);
-        console.log("V" + numbsV);
+        return "V" + numbsV;
 
       } else if (tensRem === 4) {
-        console.log("IV");
+        return "IV";
 
       } else {
         var numbsI = concatRomans("I", tensRem);
-        console.log(numbsI);
+        return numbsI;
       }
     }
   //  $(".result").show();
