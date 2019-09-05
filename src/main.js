@@ -3,6 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
+// Backend logic
 export const concatRomans = (letter, number) => {
   let text= '';
   for(let i = 0; i < number; i++) {
@@ -11,7 +12,7 @@ export const concatRomans = (letter, number) => {
   return text;
 };
 
-export const convertToRomanNumeral = (userInput) => {
+export const convertToRomanNumeral = userInput => {
   const digits = userInput.toString().length;
   let thousandsRem, hundredsRem, tensRem;
   let romanNumeral = '';
@@ -121,6 +122,7 @@ export const convertToRomanNumeral = (userInput) => {
   return romanNumeral;
 };
 
+// User Interface logic
 $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
