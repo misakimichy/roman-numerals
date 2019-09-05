@@ -8,6 +8,11 @@ h1,
   background-color: light-gray;
 }
 
+.btn {
+  display: block;
+  margin: 10px auto;
+}
+
 #roman-numeral {
   font-size: 20px;
 }

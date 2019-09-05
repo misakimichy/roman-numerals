@@ -13,19 +13,14 @@ export const concatRomans = (letter, number) => {
 
 export const convertToRomanNumeral = (userInput) => {
   const digits = userInput.toString().length;
-  //return an error message when besides 1 - 3999
-  //Error throw
-  try {
-    if (userInput > 3999 || userInput <= 0) {
-      throw new Error("Please enter number between 1 to 3999!");
-    }
-  } catch(error) {
-    alert(error);
-    return;
-  }
-
   let thousandsRem, hundredsRem, tensRem;
   let romanNumeral = '';
+  //throw an error message when besides 1 - 3999
+  if (userInput > 3999 || userInput <= 0) {
+    alert("Please enter number between 1 to 3999!");
+    throw new Error("Please enter number between 1 to 3999!");
+  }
+  
   // Bigger than 1000 (4 digits)
   if (userInput === 1000) {
     romanNumeral = "M";
