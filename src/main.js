@@ -20,7 +20,16 @@ export const convertToRomanNumeral = (userInput) => {
   let thousandsRem, hundredsRem, tensRem;
   let romanNumeral = '';
   // Bigger than 1000 (4 digits)
-  if (digits >= 4) {
+  if (userInput === 1000) {
+    romanNumeral = "M";
+    return romanNumeral;
+  } else if (userInput === 100) {
+    romanNumeral = "C";
+    return romanNumeral;
+  } else if (userInput === 10) {
+    romanNumeral = "X";
+    return romanNumeral;
+  } else if (digits >= 4) {
     thousandsRem = userInput % 1000;
     const digitThousands = (userInput - thousandsRem) / 1000;
     const numbsM = concatRomans("M", digitThousands);
@@ -114,7 +123,6 @@ $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
     const userInput = parseInt($("input#user-input").val());
-    console.log(userInput);
     const romanNumeral = convertToRomanNumeral(userInput);
     $(".result").show();
     $("#roman-numeral").text(romanNumeral);
