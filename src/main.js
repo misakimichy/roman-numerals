@@ -18,13 +18,13 @@ export const convertToRomanNumeral = (userInput) => {
   }
 
   let thousandsRem, hundredsRem, tensRem;
-  let romanNumeral = [];
+  let romanNumeral = '';
   // Bigger than 1000 (4 digits)
   if (digits >= 4) {
     thousandsRem = userInput % 1000;
     const digitThousands = (userInput - thousandsRem) / 1000;
     const numbsM = concatRomans("M", digitThousands);
-    romanNumeral.push(numbsM);
+    romanNumeral += numbsM;
   }
 
   // Bigger than 100 and less than 1000 (3 digits)
@@ -40,19 +40,19 @@ export const convertToRomanNumeral = (userInput) => {
     }
 
     if (digitHundreds  === 9){
-      romanNumeral.push("CM");
+      romanNumeral += "CM";
 
     } else if (digitHundreds >= 5) {
       const digitHundreds2= digitHundreds - 5;
       const numbsC = concatRomans("C", digitHundreds2);
-      romanNumeral.push("D" + numbsC);
+      romanNumeral += "D" + numbsC;
 
     } else if (digitHundreds === 4) {
-      romanNumeral.push("CD");
+      romanNumeral += "CD";
 
     } else {
       var numbsC = concatRomans("C", digitHundreds);
-      romanNumeral.push(numbsC);
+      romanNumeral += numbsC;
     }
   }
 
@@ -68,19 +68,19 @@ export const convertToRomanNumeral = (userInput) => {
       digitTens = (userInput - tensRem) / 10;
     }
     if (digitTens  === 9){
-      romanNumeral.push("XC");
+      romanNumeral += "XC";
 
     } else if (digitTens >= 5) {
       const digitTens2 = digitTens - 5;
       const numbsX = concatRomans("X", digitTens2);
-      romanNumeral.push("L" + numbsX);
+      romanNumeral += "L" + numbsX;
 
     } else if (digitTens === 4) {
-      romanNumeral.push("XL");
+      romanNumeral += "XL";
 
     } else {
       const numbsX = concatRomans("X", digitTens);
-      romanNumeral.push(numbsX);
+      romanNumeral += numbsX;
     }
   }
 
@@ -92,21 +92,21 @@ export const convertToRomanNumeral = (userInput) => {
     }
 
     if (tensRem  === 9){
-      romanNumeral.push("IX");
+      romanNumeral += "IX";
 
     } else if (tensRem >= 5) {
       const numbsV = concatRomans("I", tensRem - 5);
-      romanNumeral.push("V" + numbsV);
+      romanNumeral += "V" + numbsV;
 
     } else if (tensRem === 4) {
-      romanNumeral.push("IV");
+      romanNumeral += "IV";
 
     } else {
       const numbsI = concatRomans("I", tensRem);
-      romanNumeral.push(numbsI);
+      romanNumeral += numbsI;
     }
   }
-  return romanNumeral.join('');
+  return romanNumeral;
 };
 
 $(document).ready(function(){
