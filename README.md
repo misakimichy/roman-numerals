@@ -1,10 +1,10 @@
 # _Roman Numerals_
 
-#### _Given a task to build a Roman Numerals Webpage, 8/22/2019_
-#### _**08/22/19: Bahay Gulle Bilgi & Misaki Koonce**_
+#### _Given a task to build a Roman Numerals Webpage_
+#### _**Created on 08/22/19: Bahay Gulle Bilgi & Misaki Koonce**_
 
 ## Description
-Build a Roman Numerals (using HTML, CSS, JavaScript and jQuery)
+Build a Roman Numerals (using HTML, CSS, JavaScript, jQuery, Webpack, Jasmine and Karma)
 
 ### Website should have:
 
@@ -29,7 +29,7 @@ You also have to separate ones, tens, hundreds, and thousands. In other words, 9
 
 ## Known Bugs
 
-* Work in progress.
+* There are no known bugs at this time.
 
 ## Support and contact details
 
@@ -38,7 +38,7 @@ You also have to separate ones, tens, hundreds, and thousands. In other words, 9
 
 ## Technologies Used
 
-_Git Github  HTML Atom Terminal CSS jQuery JavaScript
+_Git Github  HTML Atom Terminal CSS, jQuery, JavaScript, Webpack, Jasmine and Karma
 
 ### License
 
