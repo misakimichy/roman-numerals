@@ -2,7 +2,6 @@ import { convertToRomanNumeral } from './../src/main';
 
 describe('convertToRomanNumeral', function() {
   it('should convert to roman numeral', function() {
-
       // verify 1..10
       expect(convertToRomanNumeral(1)).toEqual("I");
       expect(convertToRomanNumeral(2)).toEqual("II");

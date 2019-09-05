@@ -23,7 +23,9 @@ You also have to separate ones, tens, hundreds, and thousands. In other words, 9
 
 ## Setup/Installation Requirements
 
-* Clone this repo
+* Clone this repo:
+` git clone https://github.com/misakimichy/roman-numerals.git`
+
 * Navigate to the top level of the cloned directory.
 * Then, open your preferred web browser.
 
@@ -33,13 +35,12 @@ You also have to separate ones, tens, hundreds, and thousands. In other words, 9
 
 ## Support and contact details
 
- bahayg@gmail.com
  misaki.koonce@gmail.com
 
 ## Technologies Used
 
-_Git Github  HTML Atom Terminal CSS, jQuery, JavaScript, Webpack, Jasmine and Karma
+_Git, Github, HTML, Terminal, CSS, jQuery, JavaScript, Webpack, Jasmine and Karma
 
 ### License
 
-Copyright (c) 2019 under the MIT License
+Copyright © 2019 under the MIT License
