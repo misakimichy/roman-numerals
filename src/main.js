@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-const concatRomans = (letter, number) => {
+export const concatRomans = (letter, number) => {
   let text= '';
   for(let i = 0; i < number; i++) {
     text += letter;
@@ -12,7 +12,7 @@ const concatRomans = (letter, number) => {
 };
 
 export const convertToRomanNumeral = (userInput) => {
-  const digits = userInput.length;
+  const digits = userInput.toString().length;
   if (userInput > 3999 || userInput <= 0) {
     alert("Please enter number between 1 to 3999!");
   }
@@ -30,7 +30,7 @@ export const convertToRomanNumeral = (userInput) => {
   // Bigger than 100 and less than 1000 (3 digits)
   if (digits >= 3) {
     let digitHundreds;
-    //Define digitHundreds
+    //Check if it has thousnads remainder
     if (thousandsRem){
       hundredsRem = thousandsRem % 100;
       digitHundreds = (thousandsRem - hundredsRem) / 100;
@@ -59,7 +59,7 @@ export const convertToRomanNumeral = (userInput) => {
   // Bigger than 10 and less than 100 (2 digits)
   if (digits >= 2) {
     let digitTens;
-    // Define digitTens
+    //Check if it has thousnads remainder
     if (hundredsRem){
       tensRem = hundredsRem % 10;
       digitTens = (hundredsRem - tensRem) / 10;
@@ -67,6 +67,7 @@ export const convertToRomanNumeral = (userInput) => {
       tensRem = userInput % 10;
       digitTens = (userInput - tensRem) / 10;
     }
+
     if (digitTens  === 9){
       romanNumeral += "XC";
 
@@ -86,7 +87,7 @@ export const convertToRomanNumeral = (userInput) => {
 
   // less than 10
   if (digits >= 1) {
-    // Define digitOnes
+    //Check if it has thousnads remainder
     if(!tensRem) {
       tensRem = parseInt(userInput);
     }
@@ -112,7 +113,8 @@ export const convertToRomanNumeral = (userInput) => {
 $(document).ready(function(){
   $("form").submit(function(event){
     event.preventDefault();
-    const userInput = $("input#user-input").val();
+    const userInput = parseInt($("input#user-input").val());
+    console.log(userInput);
     const romanNumeral = convertToRomanNumeral(userInput);
     $(".result").show();
     $("#roman-numeral").text(romanNumeral);
